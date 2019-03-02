@@ -1,0 +1,137 @@
+{
+    "public_default": {
+        "description": "Public VR - Default Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "public-vr",
+        "name": "default",
+        "route": "0.0.0.0/0",
+        "nexthop": "10.10.0.1",
+        "interface": "ethernet1/1"
+    },
+    "public_azurelb": {
+        "description": "Public VR - Azure LB Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "public-vr",
+        "name": "azure lb",
+        "route": "168.63.129.16/32",
+        "nexthop": "10.10.0.1",
+        "interface": "ethernet1/1"
+    },
+    "public_network": {
+        "description": "Public VR - Public Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "public-vr",
+        "name": "public network",
+        "route": "10.10.0.0/24",
+        "nexthop": "10.10.0.1",
+        "interface": "ethernet1/1"
+    },
+    "public_private": {
+        "description": "Public VR - Private Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "public-vr",
+        "name": "private network",
+        "route": "10.10.128.0/20",
+        "nexthop": "private-vr",
+        "interface": "na"
+    },
+    "public_gateway": {
+        "description": "Public VR - Gateway Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "public-vr",
+        "name": "gateway network",
+        "route": "10.0.0.0/8",
+        "nexthop": "gateway-vr",
+        "interface": "na"
+    },
+    "private_azurelb": {
+        "description": "Private VR - Azure LB Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "private-vr",
+        "name": "azure lb",
+        "route": "168.63.129.16/32",
+        "nexthop": "10.10.128.1",
+        "interface": "ethernet1/2"
+    },
+    "private_network": {
+        "description": "Private VR - Private Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "private-vr",
+        "name": "private network",
+        "route": "10.10.128.0/20",
+        "nexthop": "10.10.128.1",
+        "interface": "ethernet1/2"
+    },
+    "private_default": {
+        "description": "Private VR - Default Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "private-vr",
+        "name": "default",
+        "route": "0.0.0.0/0",
+        "nexthop": "public-vr",
+        "interface": "na"
+    },
+    "private_gateway": {
+        "description": "Private VR - Gateway Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "private-vr",
+        "name": "gateway network",
+        "route": "10.0.0.0/8",
+        "nexthop": "gateway-vr",
+        "interface": "na"
+    },
+    "private_public": {
+        "description": "Private VR - Public Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "private-vr",
+        "name": "public network",
+        "route": "10.10.0.0/24",
+        "nexthop": "public-vr",
+        "interface": "na"
+    },
+    "gateway_azurelb": {
+        "description": "Gateway VR - Azure LB Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "gateway-vr",
+        "name": "azure lb",
+        "route": "168.63.129.16/32",
+        "nexthop": "10.10.1.1",
+        "interface": "ethernet1/3"
+    },
+    "gateway_network": {
+        "description": "Gateway VR - Gateway Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "gateway-vr",
+        "name": "gateway network",
+        "route": "10.0.0.0/8",
+        "nexthop": "10.10.1.1",
+        "interface": "ethernet1/3"
+    },
+    "gateway_default": {
+        "description": "Gateway VR - Default Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "gateway-vr",
+        "name": "default",
+        "route": "0.0.0.0/0",
+        "nexthop": "public-vr",
+        "interface": "na"
+    },
+    "gateway_public": {
+        "description": "Gateway VR - Public Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "gateway-vr",
+        "name": "public network",
+        "route": "10.10.0.0/24",
+        "nexthop": "public-vr",
+        "interface": "na"
+    },
+    "gateway_private": {
+        "description": "Gateway VR - Private Network Route",
+        "template": "1 - Azure FW",
+        "virtual_router": "gateway-vr",
+        "name": "private network",
+        "route": "10.10.128.0/20",
+        "nexthop": "private-vr",
+        "interface": "na"
+    }
+}
