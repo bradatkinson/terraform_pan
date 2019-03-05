@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -69,13 +69,16 @@ def get_ha_status(pano):
     ha_status : str
         The high availability status of Panorama
     """
-    command = '<show><system><state><filter>ha.app.cli.state-prompt</filter></state></system></show>'
+    command = ('<show><system><state><filter>ha.app.cli.state-prompt'
+               '</filter></state></system></show>')
     results = pano.op(cmd=command, cmd_xml=False, xml=True)
 
     if 'primary' in results:
-        ha_status = re.sub('<response status="success"><result>ha.app.cli.state-prompt: primary-', '', results)
+        ha_status = re.sub('<response status="success"><result>'
+                           'ha.app.cli.state-prompt: primary-', '', results)
     elif 'secondary' in results:
-        ha_status = re.sub('<response status="success"><result>ha.app.cli.state-prompt: secondary-', '', results)
+        ha_status = re.sub('<response status="success"><result>'
+                           'ha.app.cli.state-prompt: secondary-', '', results)
 
     ha_status = re.sub('\n</result></response>', '', ha_status)
 
